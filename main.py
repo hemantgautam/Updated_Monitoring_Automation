@@ -24,15 +24,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 # import pywin32
 
 
-sched = BlockingScheduler()
+# sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', id='my_job_id', seconds=300)
+# @sched.scheduled_job('interval', id='my_job_id', seconds=300)
 def main():
 	print('Start Time', datetime.now())
 	# options = Options()
 	# options.headless = True
 	# hit the monitoring url
-	driver = webdriver.Chrome(executable_path=r'D:\Users\SSayed1\PycharmProjects\HMD\monitoring_automation\chromedriver.exe')
+	driver = webdriver.Chrome(executable_path=r'D:\Users\HGautam3\Projects\HMD Support\Updated Monitoring\Updated_Monitoring_Automation\chromedriver.exe')
 	driver.get('https://itsusralsp06834.jnj.com:8443/ControlM/')
 	# while True:
 	# 	sleep(1)
@@ -43,9 +43,9 @@ def main():
 	# # Find the value of org?
 	# val = org.get_attribute("attribute name")
 
-	user_name.send_keys("ssayed1")
+	user_name.send_keys("cpatil11")
 	# user_name.send_keys(Keys.ENTER)
-	password.send_keys("Zuhaan@256")
+	password.send_keys("Chana@1811")
 	password.send_keys(Keys.ENTER)
 	time.sleep(3)
 	mont = driver.find_element("xpath", "//*[@id='SelfServiceDomainTabHeader']").click()
@@ -59,9 +59,7 @@ def main():
 	path_for_count = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/div[2]/a/div/span[2]/flat-status-chart/div/div/div[1]"
 	size_variable = driver.find_element("xpath", path_for_count)
 	size = int(size_variable.text)
-	size = 2
-	# import pdb; pdb.set_trace()
-	# print(size)
+
 	time.sleep(3)
 	button = driver.find_element("xpath", "//*[@id='servicesListViewButton']").click()
 
@@ -70,8 +68,8 @@ def main():
 
 	lst =['1MDPD-DEPUY SYNTHES - US - BIDW - ODH PRD-DEPUYBI']
 
-	# Fetch lit of images from folder
-	ss_list = os.listdir(r"D:\Users\SSayed1\PycharmProjects\HMD\monitoring_automation\sceenshots")
+	# Fetch list of images from folder
+	ss_list = os.listdir(r"D:\Users\HGautam3\Projects\HMD Support\Updated Monitoring\Updated_Monitoring_Automation\sceenshots")
 
 	print(ss_list)
 	for i in range(1,size+1):
@@ -105,7 +103,7 @@ def main():
 			path4 = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[4]/tab-content/service-viewpoint/div/div[2]/div[2]/div[3]/job-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[6]/div/div/div[1]/span/i"
 			remove_filter_option = driver.find_element("xpath", path4).click()
 			time.sleep(3)
-			print(apps)
+
 			if apps+'.png' not in ss_list:
 				# minimize_arrow = driver.find_element("xpath", "//*[@class='d-icon-arrow_right']").click()
 				# minimize_arrow_path = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[4]/tab-content/service-viewpoint/div/div[2]/div[3]/job-details/div[1]/div[3]/span"
@@ -113,29 +111,30 @@ def main():
 				# minimize_arrow = driver.find_element("xpath", minimize_arrow_path).click()
 
 				time.sleep(3)
-				ss = driver.save_screenshot("sceenshots/{0}.png".format(apps))
+				print(apps)
+				ss = driver.save_screenshot("D:/Users/HGautam3/Projects/HMD Support/Updated Monitoring/Updated_Monitoring_Automation/sceenshots/{0}.png".format(apps))
 
 				# img = "D:/Users/SSayed1/PycharmProjects/HMD/monitoring_automation/sceenshots/1EUSS-MD&D ETHICON US SALES DATA WAREHOUSE PROD-Contract.png"
 				img = "sceenshots/{0}.png".format(apps)
-				kit.sendwhats_image("J6ahcZQ0iiO312PU8dXOIb", img, apps)
+				# kit.sendwhats_image("J6ahcZQ0iiO312PU8dXOIb", img, apps)
 				# pg.press("enter")
 
 			else:
 				ss = driver.save_screenshot("Repeat/{0}.png".format(apps))
 				img = "Repeat/{0}.png".format(apps)
-				kit.sendwhats_image("J6ahcZQ0iiO312PU8dXOIb", img, apps)
+				# kit.sendwhats_image("J6ahcZQ0iiO312PU8dXOIb", img, apps)
 				# pg.press("enter")
 			time.sleep(3)
 			# services = driver.find_element("xpath", "//*[@id='servicesTabDiv']").click()
 
-			account_sid = "AC955bea3a05afba5079c97b726a377bfb"
-			auth_token = "f9b6c24d422e9d75a9abaf8e951a94a0"
-			client = Client(account_sid, auth_token)
-			message = client.messages.create(
-				from_='whatsapp:+14155238886',
-				body=apps,
-				# media_url=["D:/Users/SSayed1/PycharmProjects/HMD/monitoring_automation/test_{0}.png".format(i)],
-				to='whatsapp:+918792564177')
+			# account_sid = "AC955bea3a05afba5079c97b726a377bfb"
+			# auth_token = "f9b6c24d422e9d75a9abaf8e951a94a0"
+			# client = Client(account_sid, auth_token)
+			# message = client.messages.create(
+			# 	from_='whatsapp:+14155238886',
+			# 	body=apps,
+			# 	# media_url=["D:/Users/SSayed1/PycharmProjects/HMD/monitoring_automation/test_{0}.png".format(i)],
+			# 	to='whatsapp:+918792564177')
 
 			close_tab = driver.find_element("xpath", "//*[contains(@class, 'd-icon-cross') and contains(@class, 'ng-scope')]").click()
 			time.sleep(3)
@@ -143,5 +142,5 @@ def main():
 			time.sleep(3)
 	print('End Time',datetime.now() )
 
-sched.start()
-#main()
+# sched.start()
+main()

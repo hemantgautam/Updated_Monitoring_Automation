@@ -604,3 +604,15 @@ Group ID: J6ahcZQ0iiO312PU8dXOIb
 Image: sceenshots/1MDPD-ONEMD COMMERCIAL DATA WAREHOUSE - PROD-VELYS.png
 Caption: 1MDPD-ONEMD COMMERCIAL DATA WAREHOUSE - PROD-VELYS
 --------------------
+Date: 18/4/2023
+Time: 19:24
+Group ID: J6ahcZQ0iiO312PU8dXOIb
+Image: sceenshots/1MDPD-ONEMD COMMERCIAL DATA WAREHOUSE - PROD-Contract and pricing.png
+Caption: 1MDPD-ONEMD COMMERCIAL DATA WAREHOUSE - PROD-Contract and pricing
+--------------------
+Date: 18/4/2023
+Time: 19:26
+Group ID: J6ahcZQ0iiO312PU8dXOIb
+Image: sceenshots/1MDPD-ONEMD COMMERCIAL DATA WAREHOUSE - PROD-DBB.png
+Caption: 1MDPD-ONEMD COMMERCIAL DATA WAREHOUSE - PROD-DBB
+--------------------
