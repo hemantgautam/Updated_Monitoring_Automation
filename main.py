@@ -56,17 +56,17 @@ def main():
 	time.sleep(3)
 	ended_not_ok = driver.find_element("xpath","/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[3]/tab-content/sls-services/div/div[2]/div[1]/div/div[1]/div[1]/ul/li[3]/span[1]").click()
 	time.sleep(3)
+	
 	path_for_count = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/div[2]/a/div/span[2]/flat-status-chart/div/div/div[1]"
 	size_variable = driver.find_element("xpath", path_for_count)
 	size = int(size_variable.text)
-
+	print("Size: ", size)
 	time.sleep(3)
 	button = driver.find_element("xpath", "//*[@id='servicesListViewButton']").click()
 
-
 	time.sleep(3)
 
-	lst =['1MDPD-DEPUY SYNTHES - US - BIDW - ODH PRD-DEPUYBI']
+	excluded_projects =['1MDPD-DEPUY SYNTHES - US - BIDW - ODH PRD-DEPUYBI']
 
 	# Fetch list of images from folder
 	ss_list = os.listdir(r"D:\Users\HGautam3\Projects\HMD Support\Updated Monitoring\Updated_Monitoring_Automation\sceenshots")
@@ -80,12 +80,12 @@ def main():
 		apps_name_path= "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[3]/tab-content/sls-services/div/div[2]/div[1]/div/div[2]/sls-services-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[2]/div[1]/div[3]/div[2]/div/div/div[{0}]/div[3]/service-name-cell-renderer/div/a".format(i)
 		apps_name = driver.find_element("xpath", apps_name_path)
 		apps = apps_name.get_attribute('initial-text')
-		if apps not in lst:
-			path1 = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[3]/tab-content/sls-services/div/div[2]/div[1]/div/div[2]/sls-services-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[2]/div[1]/div[3]/div[2]/div/div/div[{0}]/div[3]/service-name-cell-renderer/div/a".format(i)
+		if apps not in excluded_projects:
+			ended_not_ok_project_link = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[3]/tab-content/sls-services/div/div[2]/div[1]/div/div[2]/sls-services-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[2]/div[1]/div[3]/div[2]/div/div/div[{0}]/div[3]/service-name-cell-renderer/div/a".format(i)
 			time.sleep(3)
-			driver.find_element("xpath", path1).click()
+			driver.find_element("xpath", ended_not_ok_project_link).click()
 			time.sleep(3)
-			list_view_click = driver.find_element("xpath", "//*[@id='viewpointJobListViewbtn']").click()
+			# list_view_click = driver.find_element("xpath", "//*[@id='viewpointJobListViewbtn']").click()
 			time.sleep(3)
 
 			a = ActionChains(driver)
@@ -97,12 +97,12 @@ def main():
 			time.sleep(3)
 			uncheck_all = driver.find_element("xpath", "//*[@id='selectAllContainer']").click()
 			time.sleep(3)
-			path3 = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[4]/tab-content/service-viewpoint/div/div[2]/div[2]/div[3]/job-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[6]/div/div/div[2]/div/div/div[1]/div[2]/div[3]/div/div/div[7]/label"
-			not_ok_clicked = driver.find_element("xpath", path3).click()
-			time.sleep(3)
-			path4 = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[4]/tab-content/service-viewpoint/div/div[2]/div[2]/div[3]/job-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[6]/div/div/div[1]/span/i"
-			remove_filter_option = driver.find_element("xpath", path4).click()
-			time.sleep(3)
+			# path3 = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[4]/tab-content/service-viewpoint/div/div[2]/div[2]/div[3]/job-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[6]/div/div/div[2]/div/div/div[1]/div[2]/div[3]/div/div/div[7]/label"
+			# not_ok_clicked = driver.find_element("xpath", path3).click()
+			# time.sleep(3)
+			# path4 = "/html/body/app-app-main/ng-component/app-shell/div/div/sls-domain/div/scrollable-tabset/div/div[1]/div/div/div[4]/tab-content/service-viewpoint/div/div[2]/div[2]/div[3]/job-list/div/ctm-common-grid-wrapper-downgraded/div/ag-grid-angular/div/div[6]/div/div/div[1]/span/i"
+			# remove_filter_option = driver.find_element("xpath", path4).click()
+			# time.sleep(3)
 
 			if apps+'.png' not in ss_list:
 				# minimize_arrow = driver.find_element("xpath", "//*[@class='d-icon-arrow_right']").click()
@@ -121,7 +121,7 @@ def main():
 
 			else:
 				ss = driver.save_screenshot("Repeat/{0}.png".format(apps))
-				img = "Repeat/{0}.png".format(apps)
+				img = "D:/Users/HGautam3/Projects/HMD Support/Updated Monitoring/Updated_Monitoring_Automation/Repeat/{0}.png".format(apps)
 				# kit.sendwhats_image("J6ahcZQ0iiO312PU8dXOIb", img, apps)
 				# pg.press("enter")
 			time.sleep(3)
